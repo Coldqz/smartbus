@@ -1,10 +1,10 @@
 package com.bus.smartbus
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.content.Intent
+import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
@@ -20,9 +20,12 @@ class SignUpActivity : AppCompatActivity() {
         btn_sign_up.setOnClickListener {
             signUpUser()
         }
-
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+    }
     //signUp function
 
     private fun signUpUser() {

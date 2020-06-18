@@ -36,18 +36,23 @@ class LoginActivity : AppCompatActivity(){
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {
-        if (currentUser != null) {
-            if(currentUser.isEmailVerified) {
-                startActivity(Intent(this,MainActivity::class.java))
-                //overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-                finish()
-            }else{
+            if (currentUser != null) {
+                if(currentUser.isEmailVerified) {
+                    startActivity(Intent(this,MainActivity::class.java))
+                    //overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+                    finish()
+                }else{
+                    Toast.makeText(
+                        baseContext, "Please verify your email address.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }else {
                 Toast.makeText(
-                    baseContext, "Please verify your email address.",
+                    baseContext, "Login failed.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
-        }
     }
 
     //Login function
@@ -83,7 +88,6 @@ class LoginActivity : AppCompatActivity(){
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
-
                     updateUI(null)
                 }
             }
