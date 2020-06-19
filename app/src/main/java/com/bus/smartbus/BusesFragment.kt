@@ -1,6 +1,5 @@
 package com.bus.smartbus
 
-import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.fragment_buses.*
 
 /**
  * A simple [Fragment] subclass.
@@ -33,7 +30,7 @@ class BusesFragment : Fragment() {
         list.add(Model("number 3", ""))
         list.add(Model("number 3", "asdasd"))
 
-        listView.adapter = MyAdapter(requireActivity(), R.layout.row, list)
+        listView.adapter = MyAdapter(requireActivity(), R.layout.buses_row, list)
         listView.setOnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
             if (position == 0){
                 Toast.makeText(
