@@ -1,5 +1,6 @@
 package com.bus.smartbus
 
+import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,17 +30,18 @@ class BusesFragment : Fragment() {
         var listView = view.findViewById<ListView>(R.id.ListView)
         var list = mutableListOf<Model>()
 
+        list.add(Model("number 3", ""))
         list.add(Model("number 3", "asdasd"))
 
         listView.adapter = MyAdapter(requireActivity(), R.layout.row, list)
-//        listView.setOnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
-//            if (position == 0){
-//                Toast.makeText(
-//                    baseContext, "Please verify your email address.",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//        }
+        listView.setOnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
+            if (position == 0){
+                Toast.makeText(
+                    requireContext(), "Please verify your email address.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
         return view
     }
 
