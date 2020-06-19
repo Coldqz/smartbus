@@ -47,11 +47,6 @@ class LoginActivity : AppCompatActivity(){
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-            }else {
-                Toast.makeText(
-                    baseContext, "Login failed.",
-                    Toast.LENGTH_SHORT
-                ).show()
             }
     }
 
@@ -88,7 +83,10 @@ class LoginActivity : AppCompatActivity(){
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
-                    updateUI(null)
+                    Toast.makeText(
+                        baseContext, "Wrong email or password",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }
