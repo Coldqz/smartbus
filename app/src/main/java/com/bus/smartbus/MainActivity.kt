@@ -41,19 +41,19 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.buses ->{
-                    stationsFragment = StationsFragment()
+                    busesFragment = BusesFragment()
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.frame_layout, stationsFragment)
+                        .replace(R.id.frame_layout, busesFragment)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit()
                 }
 
                 R.id.stations ->{
-                    busesFragment = BusesFragment()
+                    stationsFragment = StationsFragment()
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.frame_layout, busesFragment)
+                        .replace(R.id.frame_layout, stationsFragment)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit()
                 }
