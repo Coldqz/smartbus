@@ -43,13 +43,13 @@ class BusesFragment : Fragment() {
 
             if (position == 1){
                 Toast.makeText(
-                    requireContext(), "I AM 2",
+                    requireContext(), "I AM 2A",
                     Toast.LENGTH_SHORT
                 ).show()
             }
 
             if (position == 2){
-                val markerList = arrayListOf<String>("48.5219277,25.0139032","48.5259212,25.0264061","48.524686,25.035598","48.5243528,25.0420084","48.5250987,25.0471553","48.5258819,25.0578298","48.5258474,25.0618019","48.5257274,25.0695304","48.5228098,25.090712","48.5253455,25.0781946")
+                val markerList = arrayListOf<String>("48.5219277,25.0139032","48.5259212,25.0264061","48.524686,25.035598","48.5243528,25.0420084","48.5250987,25.0471553","48.5258819,25.0578298","48.5258474,25.0618019","48.5257274,25.0695304","48.5253455,25.0781946","48.5228098,25.090712")
 
                 val intent = Intent(requireActivity(),MapsActivity::class.java)
                 intent.putExtra("markerList", markerList)
