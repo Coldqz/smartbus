@@ -2,6 +2,10 @@ package com.bus.smartbus
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ListView
+import android.widget.Toast
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -17,6 +21,27 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+
+        var listView = findViewById<ListView>(R.id.ListView)
+        var list = mutableListOf<Model>()
+
+        list.add(Model("№ 2", "Залізничний вокзал - Шепарівське кільце"))
+        list.add(Model("№ 2А", "Залізничний вокзал - Шепарівці-Левада"))
+        list.add(Model("№ 3", "Н.Вербіж(міст)- Завод КРП"))
+
+
+        listView.adapter = MyAdapter(this, R.layout.stations_row, list)
+
+        listView.setOnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
+            if (position == 0) {
+                Toast.makeText(
+                    baseContext, "I AM 2",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -34,10 +59,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val home1 = intent.getStringExtra("home1")
+        val home2 = intent.getStringExtra("home2")
+        val home3 = intent.getStringExtra("home3")
+        val home4 = intent.getStringExtra("home4")
+
+        val markerList = intent.getStringArrayListExtra("markerList")
+        for (value in markerList){
+
+            var strTmp = value
+            var foo =  strTmp.split(",")
+            val tmpMarker = LatLng(foo[0].toDouble(), foo[1].toDouble())
+            mMap.addMarker(MarkerOptions().position(tmpMarker))
+        }
+
+        val ratusha = LatLng(48.526294,25.024429)
+//        val kiltse = LatLng(home3.toDouble(), home4.toDouble())
+//        mMap.addMarker(MarkerOptions().position(ratusha).title("Marker in Ratusha"))
+//        mMap.addMarker(MarkerOptions().position(kiltse).title("Marker in Ratusha"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(ratusha))
+        mMap.setMinZoomPreference(15.0f)
     }
 }

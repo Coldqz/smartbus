@@ -43,14 +43,25 @@ class BusesFragment : Fragment() {
                 ).show()            }
 
             if (position == 1){
-                Toast.makeText(
-                    requireContext(), "I AM 2A",
-                    Toast.LENGTH_SHORT
-                ).show()
+                val home1 = "48.526294"
+                val home2 = "25.024429"
+
+                val home3 = "48.524987"
+                val home4 = "25.036993"
+
+                val intent = Intent(requireActivity(),MapsActivity::class.java)
+                intent.putExtra("home1",home1)
+                intent.putExtra("home2",home2)
+                intent.putExtra("home3",home3)
+                intent.putExtra("home4",home4)
+                startActivity(intent)
             }
 
             if (position == 2){
-                startActivity(Intent(requireActivity(),MapsActivity::class.java))
+                val mutableListA = arrayListOf<String>("48.526294,25.024429","48.524987,25.036993")
+                val intent = Intent(requireActivity(),MapsActivity::class.java)
+                intent.putExtra("markerList", mutableListA)
+                startActivity(intent)
             }
         }
         return view
