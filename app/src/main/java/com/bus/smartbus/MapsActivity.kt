@@ -44,7 +44,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -62,13 +61,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        // Add a marker in Sydney and move the camera
-        val home1 = intent.getStringExtra("home1")
-        val home2 = intent.getStringExtra("home2")
-        val home3 = intent.getStringExtra("home3")
-        val home4 = intent.getStringExtra("home4")
-
-
 //        add stations markers
 //        val markerList = intent.getStringArrayListExtra("markerList")
 //        for (value in markerList){
@@ -95,10 +87,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 //        )
 
         val main = LatLng(48.526294,25.024429)
-
-//        val kiltse = LatLng(home3.toDouble(), home4.toDouble())
-//        mMap.addMarker(MarkerOptions().position(ratusha).title("Marker in Ratusha"))
-//        mMap.addMarker(MarkerOptions().position(kiltse).title("Marker in Ratusha"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(main))
         mMap.setMinZoomPreference(13.0f)
     }

@@ -42,18 +42,10 @@ class BusesFragment : Fragment() {
                 ).show()            }
 
             if (position == 1){
-                val home1 = "48.526294"
-                val home2 = "25.024429"
-
-                val home3 = "48.524987"
-                val home4 = "25.036993"
-
-                val intent = Intent(requireActivity(),MapsActivity::class.java)
-                intent.putExtra("home1",home1)
-                intent.putExtra("home2",home2)
-                intent.putExtra("home3",home3)
-                intent.putExtra("home4",home4)
-                startActivity(intent)
+                Toast.makeText(
+                    requireContext(), "I AM 2",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
             if (position == 2){
