@@ -24,7 +24,6 @@ class BusesFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_buses, container, false)
         //return LayoutInflater.from(container?.context).inflate(R.layout.fragment_buses, container, false)
 
-        //var listView = view.findViewById<ListView>(R.id.ListView)
         var listView = view.findViewById<ListView>(R.id.ListView)
         var list = mutableListOf<Model>()
 
@@ -58,9 +57,10 @@ class BusesFragment : Fragment() {
             }
 
             if (position == 2){
-                val mutableListA = arrayListOf<String>("48.526294,25.024429","48.524987,25.036993")
+                val markerList = arrayListOf<String>("48.5219277,25.0139032","48.5259212,25.0264061","48.524686,25.035598","48.5243528,25.0420084","48.5250987,25.0471553","48.5258819,25.0578298","48.5258474,25.0618019","48.5257274,25.0695304","48.5228098,25.090712","48.5253455,25.0781946")
+
                 val intent = Intent(requireActivity(),MapsActivity::class.java)
-                intent.putExtra("markerList", mutableListA)
+                intent.putExtra("markerList", markerList)
                 startActivity(intent)
             }
         }

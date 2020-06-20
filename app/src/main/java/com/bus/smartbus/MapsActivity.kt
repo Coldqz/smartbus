@@ -12,11 +12,14 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+    private lateinit var zalupa: PolylineOptions
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,20 +68,38 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val home3 = intent.getStringExtra("home3")
         val home4 = intent.getStringExtra("home4")
 
-        val markerList = intent.getStringArrayListExtra("markerList")
-        for (value in markerList){
 
-            var strTmp = value
-            var foo =  strTmp.split(",")
-            val tmpMarker = LatLng(foo[0].toDouble(), foo[1].toDouble())
-            mMap.addMarker(MarkerOptions().position(tmpMarker))
-        }
+//        add stations markers
+//        val markerList = intent.getStringArrayListExtra("markerList")
+//        for (value in markerList){
+//
+//            var strTmp = value
+//            var foo =  strTmp.split(",")
+//            val tmpMarker = LatLng(foo[0].toDouble(), foo[1].toDouble())
+//            mMap.addMarker(MarkerOptions().position(tmpMarker))
+//        }
 
-        val ratusha = LatLng(48.526294,25.024429)
+//        add route markers
+//        val markerList = intent.getStringArrayListExtra("markerList")
+//        zalupa = PolylineOptions()
+//        for (value in markerList){
+//
+//            var strTmp = value
+//            var foo =  strTmp.split(",")
+//            val tmpMarker = LatLng(foo[0].toDouble(), foo[1].toDouble())
+//            zalupa = zalupa.add(tmpMarker)
+//            println(tmpMarker)
+//        }
+//        mMap.addPolyline(
+//            zalupa
+//        )
+
+        val main = LatLng(48.526294,25.024429)
+
 //        val kiltse = LatLng(home3.toDouble(), home4.toDouble())
 //        mMap.addMarker(MarkerOptions().position(ratusha).title("Marker in Ratusha"))
 //        mMap.addMarker(MarkerOptions().position(kiltse).title("Marker in Ratusha"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(ratusha))
-        mMap.setMinZoomPreference(15.0f)
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(main))
+        mMap.setMinZoomPreference(13.0f)
     }
 }
